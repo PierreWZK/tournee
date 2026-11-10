@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#14110f" />
+    <title>Tournée</title>
+    <meta name="description" content="La carte de France des bars, restaurants et boulangeries, avec le trajet le plus court pour tous les faire." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tournée" />
+    <meta property="og:description" content="La carte de France des bars, restaurants et boulangeries, avec le trajet le plus court pour tous les faire." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="map" aria-label="Carte de France"></div>
+    <aside id="panel">
+      <header>
+        <h1>Tournée</h1>
+        <p>Bars, restaurants, boulangeries&nbsp;: toute la France, d'un trajet.</p>
+      </header>
+      <section>
+        <h2>Lieux</h2>
+        <fieldset class="cats">
+          <label><input type="checkbox" id="cat-bar" /><span class="dot" style="--c:#f5a524"></span>Bars</label>
+          <label><input type="checkbox" id="cat-restaurant" /><span class="dot" style="--c:#e0634a"></span>Restaurants</label>
+          <label><input type="checkbox" id="cat-bakery" /><span class="dot" style="--c:#f3ead9"></span>Boulangeries</label>
+        </fieldset>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </section>
+      <section>
+        <h2>Zone</h2>
+        <select id="zone-select" aria-label="Région"></select>
+        <form id="zone-search" class="zone-search">
+          <input id="zone-q" type="search" placeholder="Ville ou département" aria-label="Ville ou département" autocomplete="off" />
+          <button type="submit">Chercher</button>
+        </form>
+        <ul id="zone-results" class="results"></ul>
+        <p id="zone-status" class="status" role="status" aria-live="polite">Toute la France</p>
+      </section>
+      <section>
+        <h2>Trajet</h2>
+        <div class="actions">
+          <button type="button" id="route-start" class="ghost">Départ</button>
+          <button type="button" id="route-go" disabled>Calculer</button>
+          <button type="button" id="route-clear" class="ghost">Effacer</button>
+        </div>
+        <p id="route-status" class="status" role="status" aria-live="polite">Fixe un départ sur la carte, puis calcule le trajet le plus court.</p>
+      </section>
+    </aside>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
