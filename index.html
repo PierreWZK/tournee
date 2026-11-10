@@ -4,52 +4,117 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#14110f" />
-    <title>Tournée</title>
-    <meta name="description" content="La carte de France des bars, restaurants et boulangeries, avec le trajet le plus court pour tous les faire." />
+    <title>Tournée · Tous les bars de la ville, un seul trajet</title>
+    <meta name="description" content="La carte de France des bars, restaurants et boulangeries, avec le trajet le plus court pour tous les faire. Gratuit, sans compte." />
+    <link rel="canonical" href="https://tournee.projectp.fr/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Tournée" />
+    <meta property="og:url" content="https://tournee.projectp.fr/" />
+    <meta property="og:title" content="Tournée · Tous les bars de la ville, un seul trajet" />
     <meta property="og:description" content="La carte de France des bars, restaurants et boulangeries, avec le trajet le plus court pour tous les faire." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div id="map" aria-label="Carte de France"></div>
-    <aside id="panel">
-      <header>
-        <h1>Tournée</h1>
-        <p>Bars, restaurants, boulangeries&nbsp;: toute la France, d'un trajet.</p>
-      </header>
-      <section>
-        <h2>Lieux</h2>
-        <fieldset class="cats">
-          <label><input type="checkbox" id="cat-bar" /><span class="dot" style="--c:#f5a524"></span>Bars</label>
-          <label><input type="checkbox" id="cat-restaurant" /><span class="dot" style="--c:#e0634a"></span>Restaurants</label>
-          <label><input type="checkbox" id="cat-bakery" /><span class="dot" style="--c:#f3ead9"></span>Boulangeries</label>
-        </fieldset>
-        <p id="status" class="status" role="status" aria-live="polite"></p>
-      </section>
-      <section>
-        <h2>Zone</h2>
-        <select id="zone-select" aria-label="Région"></select>
-        <form id="zone-search" class="zone-search">
-          <input id="zone-q" type="search" placeholder="Ville ou département" aria-label="Ville ou département" autocomplete="off" />
-          <button type="submit">Chercher</button>
-        </form>
-        <ul id="zone-results" class="results"></ul>
-        <p id="zone-status" class="status" role="status" aria-live="polite">Toute la France</p>
-      </section>
-      <section>
-        <h2>Trajet</h2>
-        <div class="actions">
-          <button type="button" id="route-start" class="ghost">Départ</button>
-          <button type="button" id="route-go" disabled>Calculer</button>
-          <button type="button" id="route-clear" class="ghost">Effacer</button>
+    <header class="top">
+      <a class="brand" href="/">Tournée</a>
+      <nav>
+        <a class="nav-link" href="#comment">Comment ça marche</a>
+        <a class="btn btn-sm" href="/carte/">Ouvrir la carte</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">Bars · Restaurants · Boulangeries</p>
+          <h1>Tous les bars de la ville. <em>Un seul trajet.</em></h1>
+          <p class="lede">Tournée affiche les bars, restaurants et boulangeries de n'importe quelle ville de France, puis trace le chemin le plus court pour passer par chacun.</p>
+          <div class="ctas">
+            <a class="btn" href="/carte/">Ouvrir la carte <span aria-hidden="true">→</span></a>
+            <a class="btn ghost" href="#comment">Comment ça marche</a>
+          </div>
+          <dl class="facts">
+            <div><dt data-fact="bars">165</dt><dd>bars à Rennes</dd></div>
+            <div><dt data-fact="km">40,7 km</dt><dd>pour tous les faire</dd></div>
+            <div><dt>0</dt><dd>compte à créer</dd></div>
+          </dl>
         </div>
-        <p id="route-status" class="status" role="status" aria-live="polite">Fixe un départ sur la carte, puis calcule le trajet le plus court.</p>
+
+        <figure class="hero-map">
+          <svg id="hero-svg" viewBox="0 0 600 600" role="img" aria-labelledby="hero-svg-title">
+            <title id="hero-svg-title">La carte de France zoome sur Rennes, puis le trajet le plus court relie tous ses bars.</title>
+          </svg>
+          <figcaption class="hud" aria-hidden="true">
+            <span class="hud-stage" id="hero-stage">France</span>
+            <span class="hud-km" id="hero-km"></span>
+          </figcaption>
+          <span class="chip" aria-hidden="true">Démo · données réelles</span>
+        </figure>
       </section>
-    </aside>
-    <script type="module" src="/src/main.ts"></script>
+
+      <section class="steps" id="comment">
+        <div class="section-head">
+          <p class="eyebrow">Comment ça marche</p>
+          <h2>Trois gestes, et la tournée est prête.</h2>
+        </div>
+        <ol class="step-list">
+          <li>
+            <span class="step-n">01</span>
+            <h3>Choisis tes lieux</h3>
+            <p>Bars, restaurants, boulangeries&nbsp;: coche ce qui te tente. Chaque catégorie a sa couleur sur la carte.</p>
+          </li>
+          <li>
+            <span class="step-n">02</span>
+            <h3>Choisis ta zone</h3>
+            <p>Toute la France, une région, ou n'importe quelle ville ou département grâce à la recherche.</p>
+          </li>
+          <li>
+            <span class="step-n">03</span>
+            <h3>Lance la tournée</h3>
+            <p>Clique ton point de départ sur la carte. Tournée calcule l'ordre de passage le plus court et trace le trajet.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="engine">
+        <div class="engine-text">
+          <p class="eyebrow">Sous le capot</p>
+          <h2>Le plus court, calculé dans ton navigateur.</h2>
+          <p>Tournée part du lieu le plus proche, puis du suivant, et ainsi de suite. Ensuite, elle décroise le trajet&nbsp;: dès que deux tronçons se croisent, elle inverse le passage entre eux, tant que ça raccourcit. C'est la méthode «&nbsp;2-opt&nbsp;», en général à quelques pour cent du meilleur trajet possible.</p>
+          <ul class="specs">
+            <li><strong>1000 lieux</strong> par trajet, calculés en moins de deux secondes.</li>
+            <li><strong>OpenStreetMap</strong>&nbsp;: des données libres, tenues à jour par ses contributeurs.</li>
+            <li><strong>Cache de 7 jours</strong>&nbsp;: une zone déjà vue s'affiche tout de suite.</li>
+            <li><strong>Sans compte</strong>, sans clé, sans publicité.</li>
+          </ul>
+        </div>
+        <figure class="uncross">
+          <svg viewBox="0 0 320 220" role="img" aria-labelledby="uncross-title">
+            <title id="uncross-title">Avant : deux tronçons se croisent. Après : le passage est inversé et le trajet raccourcit.</title>
+            <path class="u-before" d="M30 170 L230 50 L90 50 L290 170" />
+            <path class="u-after" d="M30 170 L90 50 L230 50 L290 170" />
+            <g class="u-dots">
+              <circle cx="30" cy="170" r="6" /><circle cx="90" cy="50" r="6" />
+              <circle cx="230" cy="50" r="6" /><circle cx="290" cy="170" r="6" />
+            </g>
+          </svg>
+          <figcaption><span class="lg lg-before">avant</span><span class="lg lg-after">après 2-opt</span></figcaption>
+        </figure>
+      </section>
+
+      <section class="final">
+        <h2>Ta prochaine tournée commence ici.</h2>
+        <a class="btn" href="/carte/">Ouvrir la carte <span aria-hidden="true">→</span></a>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span><strong>Tournée</strong> · jour 27 du défi 30 jours, 30 projets</span>
+      <span>Données © <a href="https://www.openstreetmap.org/copyright">contributeurs OpenStreetMap</a></span>
+    </footer>
+
+    <script type="module" src="/src/landing.ts"></script>
   </body>
 </html>
