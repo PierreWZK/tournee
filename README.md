@@ -107,3 +107,14 @@ Le journal de bord complet (demandes, décisions, essais, échecs) est dans [`CL
 - **Données et fond de carte** : © [contributeurs OpenStreetMap](https://www.openstreetmap.org/copyright), licence ODbL.
 - **Carte** : [Leaflet](https://leafletjs.com/).
 - **Polices** : [Fraunces](https://fonts.google.com/specimen/Fraunces) et [Inter](https://fonts.google.com/specimen/Inter) (Google Fonts).
+
+---
+
+## Le défi 30 jours, 30 projets
+
+Un projet complet par jour pendant 30 jours, chacun en ligne sur son propre sous-domaine.
+
+- 🗂️ **Tous les projets** : [projectp.fr](https://projectp.fr/)
+- 💻 **Le dépôt du défi** : [github.com/PierreWZK/30DaysProjects](https://github.com/PierreWZK/30DaysProjects)
+- ⬅️ **Jour précédent** : [Drop, boutique éphémère](https://drop.projectp.fr/)
+- ➡️ **Jour suivant** : [Iron Legacy, combat 3D](https://iron.projectp.fr/)
